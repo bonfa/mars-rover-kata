@@ -8,9 +8,9 @@ class RoverTest {
 
 /*
 AXIS
-  - command [F,B,L,R] - X
+  - world dimension [1,2] - [X]
+  - command [F,B,L,R] - WIP
   - number of commands [1,2, ..., n]
-  - world dimension [1,2]
   -
 
 * hardcoded starting position and direction - move forward only - x-axis only
