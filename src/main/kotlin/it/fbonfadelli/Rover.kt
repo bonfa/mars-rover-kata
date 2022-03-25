@@ -1,5 +1,7 @@
 package it.fbonfadelli
 
+import it.fbonfadelli.Direction.*
+
 class Rover(private var state: State) {
   fun getState(): State {
     return this.state
@@ -24,7 +26,7 @@ class Rover(private var state: State) {
 
 data class Position(val x: Int, val y: Int)
 
-data class State(val position: Position, val direction: Direction = Direction.North)
+data class State(val position: Position, val direction: Direction = North)
 
 enum class Direction {
   North,
@@ -51,29 +53,29 @@ private val incrementY: (Position) -> Position = { position -> position.copy(y =
 private val decrementY: (Position) -> Position = { position -> position.copy(y = position.y - 1) }
 
 val moveForwardMap = mapOf(
-  Direction.North to incrementY,
-  Direction.West to decrementX,
-  Direction.South to decrementY,
-  Direction.East to incrementX,
+  North to incrementY,
+  West to decrementX,
+  South to decrementY,
+  East to incrementX,
 )
 
 val moveBackwardMap = mapOf(
-  Direction.North to decrementY,
-  Direction.West to incrementX,
-  Direction.South to incrementY,
-  Direction.East to decrementX,
+  North to decrementY,
+  West to incrementX,
+  South to incrementY,
+  East to decrementX,
 )
 
 val rightRotationMap = mapOf(
-  Direction.North to Direction.East,
-  Direction.East to Direction.South,
-  Direction.South to Direction.West,
-  Direction.West to Direction.North,
+  North to East,
+  East to South,
+  South to West,
+  West to North,
 )
 
 val leftRotationMap = mapOf(
-  Direction.North to Direction.West,
-  Direction.West to Direction.South,
-  Direction.South to Direction.East,
-  Direction.East to Direction.North,
+  North to West,
+  West to South,
+  South to East,
+  East to North,
 )
