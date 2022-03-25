@@ -57,6 +57,26 @@ AXIS
         assertThat(position).isEqualTo(0)
     }
 
+    @Test
+    internal fun `different starting position - turn right - x-axis only`() {
+        val rover = Rover(1)
+        rover.turnRight()
+
+        val position = rover.getX()
+
+        assertThat(position).isEqualTo(1)
+    }
+
+    @Test
+    internal fun `different starting position - turn left - x-axis only`() {
+        val rover = Rover(1)
+        rover.turnLeft()
+
+        val position = rover.getX()
+
+        assertThat(position).isEqualTo(1)
+    }
+
 
     class Rover(initialX: Int = 0) {
         private var x: Int = initialX
@@ -71,6 +91,14 @@ AXIS
 
         fun moveBackward() {
             this.x = this.x - 1
+        }
+
+        fun turnRight() {
+            // nothing to do on X axis
+        }
+
+        fun turnLeft() {
+            // nothing to do on X axis
         }
     }
 }
