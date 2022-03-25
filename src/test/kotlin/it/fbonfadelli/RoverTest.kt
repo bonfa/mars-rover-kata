@@ -21,9 +21,9 @@ AXIS
         val rover = Rover()
         rover.moveForward()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(1)
+        assertThat(position).isEqualTo(Position(1, 0))
     }
 
     @Test
@@ -31,9 +31,9 @@ AXIS
         val rover = Rover(1)
         rover.moveForward()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(2)
+        assertThat(position).isEqualTo(Position(2, 0))
     }
 
     @Test
@@ -42,9 +42,9 @@ AXIS
         rover.moveForward()
         rover.moveForward()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(3)
+        assertThat(position).isEqualTo(Position(3, 0))
     }
 
     @Test
@@ -52,9 +52,9 @@ AXIS
         val rover = Rover(1)
         rover.moveBackward()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(0)
+        assertThat(position).isEqualTo(Position(0, 0))
     }
 
     @Test
@@ -62,9 +62,9 @@ AXIS
         val rover = Rover(1)
         rover.turnRight()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(1)
+        assertThat(position).isEqualTo(Position(1, 0))
     }
 
     @Test
@@ -72,8 +72,8 @@ AXIS
         val rover = Rover(1)
         rover.turnLeft()
 
-        val position = rover.getX()
+        val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(1)
+        assertThat(position).isEqualTo(Position(1, 0))
     }
 }

@@ -1,5 +1,7 @@
 package it.fbonfadelli
 
+data class Position(val x: Int, val y: Int)
+
 class Rover(private var x: Int = 0) {
 
   fun moveForward() {
@@ -8,6 +10,10 @@ class Rover(private var x: Int = 0) {
 
   fun getX(): Int {
     return x
+  }
+
+  fun getPosition(): Position {
+    return Position(x, 0)
   }
 
   fun moveBackward() {
