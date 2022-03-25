@@ -1,6 +1,6 @@
 package it.fbonfadelli
 
-data class Position(val x: Int, val y: Int)
+data class Position(val x: Int, val y: Int, val direction: String)
 
 class Rover(private var position: Position) {
 
@@ -17,7 +17,7 @@ class Rover(private var position: Position) {
   }
 
   fun turnRight() {
-    // nothing to do on X axis
+    this.position = this.position.copy(direction = "e")
   }
 
   fun turnLeft() {
