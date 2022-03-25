@@ -17,7 +17,7 @@ AXIS
 * */
 
     @Test
-    internal fun `hardcoded starting position and direction - move forward only - x-axis only`() {
+    internal fun `move forward`() {
         val rover = Rover(Position(0, 0))
         rover.moveForward()
 
@@ -27,7 +27,7 @@ AXIS
     }
 
     @Test
-    internal fun `different starting position - move forward only - x-axis only`() {
+    internal fun `move forward - different starting position`() {
         val rover = Rover(position = Position(1, 0))
         rover.moveForward()
 
@@ -37,7 +37,7 @@ AXIS
     }
 
     @Test
-    internal fun `different starting position - move forward many times - x-axis only`() {
+    internal fun `move forward twice`() {
         val rover = Rover(position = Position(1, 0))
         rover.moveForward()
         rover.moveForward()
@@ -48,7 +48,7 @@ AXIS
     }
 
     @Test
-    internal fun `different starting position - move backward only - x-axis only`() {
+    internal fun `move backward`() {
         val rover = Rover(position = Position(1, 0))
         rover.moveBackward()
 
@@ -58,7 +58,7 @@ AXIS
     }
 
     @Test
-    internal fun `different starting position - turn right - x-axis only`() {
+    internal fun `turn right`() {
         val rover = Rover(position = Position(1, 0))
         rover.turnRight()
 
@@ -68,7 +68,7 @@ AXIS
     }
 
     @Test
-    internal fun `different starting position - turn left - x-axis only`() {
+    internal fun `turn left`() {
         val rover = Rover(position = Position(1, 0))
         rover.turnLeft()
 
