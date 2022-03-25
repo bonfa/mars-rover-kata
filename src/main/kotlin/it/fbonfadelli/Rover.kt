@@ -30,7 +30,16 @@ class Rover(private var state: State) {
   }
 
   fun moveForward() {
-    this.state = this.state.copy(x = this.state.x + 1)
+    if (this.state.direction == Direction.North)
+      this.state = this.state.copy(y = this.state.y + 1)
+
+    else if (this.state.direction == Direction.West)
+      this.state = this.state.copy(x = this.state.x - 1)
+
+    else if (this.state.direction == Direction.South)
+      this.state = this.state.copy(y = this.state.y - 1)
+
+    else this.state = this.state.copy(x = this.state.x + 1)
   }
 
   fun moveBackward() {
