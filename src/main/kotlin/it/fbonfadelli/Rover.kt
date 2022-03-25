@@ -2,18 +2,24 @@ package it.fbonfadelli
 
 data class Position(val x: Int, val y: Int)
 
-class Rover(private var x: Int = 0) {
+class Rover(x: Int = 0) {
+
+  private var position: Position
+
+  init {
+    position = Position(x, 0)
+  }
 
   fun moveForward() {
-    this.x = this.x + 1
+    this.position = this.position.copy(x = this.position.x + 1)
   }
 
   fun getPosition(): Position {
-    return Position(x, 0)
+    return this.position
   }
 
   fun moveBackward() {
-    this.x = this.x - 1
+    this.position = this.position.copy(x = this.position.x - 1)
   }
 
   fun turnRight() {
