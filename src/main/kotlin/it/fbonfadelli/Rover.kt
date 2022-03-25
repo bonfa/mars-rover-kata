@@ -9,20 +9,6 @@ enum class Direction {
   West
 }
 
-val rightRotationMap = mapOf(
-  Direction.North to Direction.East,
-  Direction.East to Direction.South,
-  Direction.South to Direction.West,
-  Direction.West to Direction.North,
-)
-
-val leftRotationMap = mapOf(
-  Direction.North to Direction.West,
-  Direction.West to Direction.South,
-  Direction.South to Direction.East,
-  Direction.East to Direction.North,
-)
-
 class Rover(private var state: State) {
 
   fun getState(): State {
@@ -44,29 +30,40 @@ class Rover(private var state: State) {
   fun moveBackward() {
     this.state = moveBackward(state)
   }
-
-  companion object {
-
-    private fun moveForward(state: State): State =
-      when (state.direction) {
-        Direction.North -> state.copy(y = state.y + 1)
-        Direction.West -> state.copy(x = state.x - 1)
-        Direction.South -> state.copy(y = state.y - 1)
-        else -> state.copy(x = state.x + 1)
-      }
-
-    private fun moveBackward(state: State): State =
-      when (state.direction) {
-        Direction.North -> state.copy(y = state.y - 1)
-        Direction.West -> state.copy(x = state.x + 1)
-        Direction.South -> state.copy(y = state.y + 1)
-        else -> state.copy(x = state.x - 1)
-      }
-
-    private fun rotateRight(state: State): State =
-      state.copy(direction = rightRotationMap[state.direction]!!)
-
-    private fun rotateLeft(state: State): State =
-      state.copy(direction = leftRotationMap[state.direction]!!)
-  }
 }
+
+private fun moveForward(state: State): State =
+  when (state.direction) {
+    Direction.North -> state.copy(y = state.y + 1)
+    Direction.West -> state.copy(x = state.x - 1)
+    Direction.South -> state.copy(y = state.y - 1)
+    else -> state.copy(x = state.x + 1)
+  }
+
+private fun moveBackward(state: State): State =
+  when (state.direction) {
+    Direction.North -> state.copy(y = state.y - 1)
+    Direction.West -> state.copy(x = state.x + 1)
+    Direction.South -> state.copy(y = state.y + 1)
+    else -> state.copy(x = state.x - 1)
+  }
+
+private fun rotateRight(state: State): State =
+  state.copy(direction = rightRotationMap[state.direction]!!)
+
+private fun rotateLeft(state: State): State =
+  state.copy(direction = leftRotationMap[state.direction]!!)
+
+val rightRotationMap = mapOf(
+  Direction.North to Direction.East,
+  Direction.East to Direction.South,
+  Direction.South to Direction.West,
+  Direction.West to Direction.North,
+)
+
+val leftRotationMap = mapOf(
+  Direction.North to Direction.West,
+  Direction.West to Direction.South,
+  Direction.South to Direction.East,
+  Direction.East to Direction.North,
+)
