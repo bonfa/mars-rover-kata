@@ -30,20 +30,7 @@ class Rover(private var state: State) {
   }
 
   fun moveForward() {
-    if (this.state.direction == Direction.North)
-      this.state = this.state.copy(y = this.state.y + 1)
-
-    else if (this.state.direction == Direction.West)
-      this.state = this.state.copy(x = this.state.x - 1)
-
-    else if (this.state.direction == Direction.South)
-      this.state = this.state.copy(y = this.state.y - 1)
-
-    else this.state = this.state.copy(x = this.state.x + 1)
-  }
-
-  fun moveBackward() {
-    this.state = this.state.copy(x = this.state.x - 1)
+    this.state = moveForward(state)
   }
 
   fun turnRight() {
@@ -54,14 +41,24 @@ class Rover(private var state: State) {
     this.state = rotateLeft(this.state)
   }
 
+  fun moveBackward() {
+    this.state = this.state.copy(x = this.state.x - 1)
+  }
+
   companion object {
 
-    private fun rotateRight(state: State): State {
-      return state.copy(direction = rightRotationMap[state.direction]!!)
-    }
+    private fun moveForward(state: State): State =
+      when (state.direction) {
+        Direction.North -> state.copy(y = state.y + 1)
+        Direction.West -> state.copy(x = state.x - 1)
+        Direction.South -> state.copy(y = state.y - 1)
+        else -> state.copy(x = state.x + 1)
+      }
 
-    private fun rotateLeft(state: State): State {
-      return state.copy(direction = leftRotationMap[state.direction]!!)
-    }
+    private fun rotateRight(state: State): State =
+      state.copy(direction = rightRotationMap[state.direction]!!)
+
+    private fun rotateLeft(state: State): State =
+      state.copy(direction = leftRotationMap[state.direction]!!)
   }
 }
