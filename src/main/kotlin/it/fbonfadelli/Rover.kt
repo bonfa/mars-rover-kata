@@ -4,12 +4,12 @@ data class Position(val x: Int, val y: Int)
 
 class Rover(private var position: Position) {
 
-  fun moveForward() {
-    this.position = this.position.copy(x = this.position.x + 1)
-  }
-
   fun getPosition(): Position {
     return this.position
+  }
+
+  fun moveForward() {
+    this.position = this.position.copy(x = this.position.x + 1)
   }
 
   fun moveBackward() {
