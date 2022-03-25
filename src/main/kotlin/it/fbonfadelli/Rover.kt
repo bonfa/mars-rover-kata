@@ -9,6 +9,20 @@ enum class Direction {
   West
 }
 
+val rightRotationMap = mapOf(
+  Direction.North to Direction.East,
+  Direction.East to Direction.South,
+  Direction.South to Direction.West,
+  Direction.West to Direction.North,
+)
+
+val leftRotationMap = mapOf(
+  Direction.North to Direction.West,
+  Direction.West to Direction.South,
+  Direction.South to Direction.East,
+  Direction.East to Direction.North,
+)
+
 class Rover(private var state: State) {
 
   fun getPosition(): State {
@@ -34,25 +48,11 @@ class Rover(private var state: State) {
   companion object {
 
     private fun rotateRight(state: State): State {
-      val direction = when (state.direction) {
-        Direction.North -> Direction.East
-        Direction.East -> Direction.South
-        Direction.South -> Direction.West
-        else -> Direction.North
-      }
-
-      return state.copy(direction = direction)
+      return state.copy(direction = rightRotationMap[state.direction]!!)
     }
 
     private fun rotateLeft(state: State): State {
-      val direction = when (state.direction) {
-        Direction.North -> Direction.West
-        Direction.West -> Direction.South
-        Direction.South -> Direction.East
-        else -> Direction.North
-      }
-
-      return state.copy(direction = direction)
+      return state.copy(direction = leftRotationMap[state.direction]!!)
     }
   }
 }
