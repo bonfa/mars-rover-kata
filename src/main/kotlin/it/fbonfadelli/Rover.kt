@@ -3,34 +3,11 @@ package it.fbonfadelli
 import it.fbonfadelli.Direction.*
 
 class Rover(private var state: State) {
-  fun getState(): State {
-    return this.state
-  }
-
   fun execute(commands: List<Char>): State {
-    val applyCommands =
-      commands.map { commandMap[it]!! }
-        .reduce { acc, command -> { state -> command(acc(state)) } }
+    val applyCommands = commands.map { commandMap[it]!! }.reduce { acc, command -> { state -> command(acc(state)) } }
 
     this.state = applyCommands(this.state)
     return this.state
-//      this.state = turnRight(this.state)
-  }
-
-  fun moveForward() {
-    this.state = moveForward(state)
-  }
-
-  fun turnRight() {
-    this.state = rotateRight(this.state)
-  }
-
-  fun turnLeft() {
-    this.state = rotateLeft(this.state)
-  }
-
-  fun moveBackward() {
-    this.state = moveBackward(state)
   }
 }
 
@@ -45,30 +22,17 @@ enum class Direction {
   West
 }
 
-private val moveForwardf: (State) -> State = { state -> state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position)) }
-
-private val moveBackwardf: (State) -> State = { state -> state.copy(position = moveBackwardMap[state.direction]!!.invoke(state.position)) }
-private val rotateRightf: (State) -> State = { state -> state.copy(direction = rightRotationMap[state.direction]!!) }
-private val rotateLeftf: (State) -> State = { state -> state.copy(direction = leftRotationMap[state.direction]!!) }
+private val moveForward: (State) -> State = { state -> state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position)) }
+private val moveBackward: (State) -> State = { state -> state.copy(position = moveBackwardMap[state.direction]!!.invoke(state.position)) }
+private val rotateRight: (State) -> State = { state -> state.copy(direction = rightRotationMap[state.direction]!!) }
+private val rotateLeft: (State) -> State = { state -> state.copy(direction = leftRotationMap[state.direction]!!) }
 
 private val commandMap = mapOf(
-  'r' to rotateRightf,
-  'l' to rotateLeftf,
-  'f' to moveForwardf,
-  'b' to moveBackwardf,
+  'r' to rotateRight,
+  'l' to rotateLeft,
+  'f' to moveForward,
+  'b' to moveBackward,
 )
-
-private fun moveForward(state: State): State =
-  state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position))
-
-private fun moveBackward(state: State): State =
-  state.copy(position = moveBackwardMap[state.direction]!!.invoke(state.position))
-
-private fun rotateRight(state: State): State =
-  state.copy(direction = rightRotationMap[state.direction]!!)
-
-private fun rotateLeft(state: State): State =
-  state.copy(direction = leftRotationMap[state.direction]!!)
 
 private val incrementX: (Position) -> Position = { position -> position.copy(x = position.x + 1) }
 private val decrementX: (Position) -> Position = { position -> position.copy(x = position.x - 1) }

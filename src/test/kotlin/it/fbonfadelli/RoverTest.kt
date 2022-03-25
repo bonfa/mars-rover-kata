@@ -6,17 +6,6 @@ import org.junit.jupiter.api.Test
 
 class RoverTest {
 
-/*
-AXIS
-  - world dimension [1,2] - [X]
-  - command [F,B,L,R] - WIP
-  - number of commands [1,2, ..., n]
-  -
-
-* hardcoded starting position and direction - move forward only - x-axis only
-* different starting position - move forward only - x-axis only
-* */
-
     @Nested
     inner class TurnRight {
 
@@ -192,38 +181,19 @@ AXIS
         @Test
         internal fun `move forward twice`() {
             val rover = Rover(State(Position(0, 0), Direction.East))
-            rover.moveForward()
-            rover.moveForward()
 
-            val position = rover.getState()
+            val finalState = rover.execute(listOf('f', 'f'))
 
-            assertThat(position).isEqualTo(State(Position(2, 0), Direction.East))
+            assertThat(finalState).isEqualTo(State(Position(2, 0), Direction.East))
         }
 
         @Test
         internal fun `complex case`() {
             val rover = Rover(State(Position(0, 0), Direction.East))
-            rover.moveForward()
-            rover.moveForward()
-            rover.turnLeft()
-            rover.moveForward()
-            rover.turnLeft()
-            rover.moveForward()
-            rover.turnLeft()
-            rover.moveForward()
-            rover.turnLeft()
-            rover.moveForward()
-            rover.turnRight()
-            rover.moveBackward()
-            rover.moveBackward()
-            rover.moveBackward()
-            rover.turnRight()
-            rover.moveBackward()
-            rover.turnLeft()
 
-            val position = rover.getState()
+            val finalState = rover.execute(listOf('f', 'f', 'l', 'f', 'l', 'f', 'l', 'f', 'l', 'f', 'r', 'b', 'b', 'b', 'r', 'b', 'l'))
 
-            assertThat(position).isEqualTo(State(Position(3, 3), Direction.South))
+            assertThat(finalState).isEqualTo(State(Position(3, 3), Direction.South))
         }
     }
 }
