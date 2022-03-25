@@ -1,6 +1,7 @@
 package it.fbonfadelli
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class RoverTest {
@@ -57,15 +58,29 @@ AXIS
         assertThat(position).isEqualTo(State(0, 0, "n"))
     }
 
-    @Test
-    internal fun `turn right`() {
-        val rover = Rover(State(1, 0, "n"))
-        rover.turnRight()
+    @Nested
+    inner class TurnRight {
+        @Test
+        internal fun `turn right`() {
+            val rover = Rover(State(1, 0, "n"))
+            rover.turnRight()
 
-        val position = rover.getPosition()
+            val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(1, 0, "e"))
+            assertThat(position).isEqualTo(State(1, 0, "e"))
+        }
+
+        @Test
+        internal fun `turn right - from different position`() {
+            val rover = Rover(State(1, 0, "e"))
+            rover.turnRight()
+
+            val position = rover.getPosition()
+
+            assertThat(position).isEqualTo(State(1, 0, "s"))
+        }
     }
+
 
     @Test
     internal fun `turn left`() {

@@ -17,7 +17,12 @@ class Rover(private var state: State) {
   }
 
   fun turnRight() {
-    this.state = this.state.copy(direction = "e")
+    val direction =
+      if (state.direction == "n") "e"
+      else if (state.direction == "e") "s"
+      else "n"
+
+    this.state = this.state.copy(direction = direction)
   }
 
   fun turnLeft() {
