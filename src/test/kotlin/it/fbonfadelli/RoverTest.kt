@@ -19,23 +19,23 @@ AXIS
 
     @Test
     internal fun `move forward twice`() {
-        val rover = Rover(State(1, 0, Direction.North))
+        val rover = Rover(State(1, 0, Direction.East))
         rover.moveForward()
         rover.moveForward()
 
         val position = rover.getState()
 
-        assertThat(position).isEqualTo(State(3, 0, Direction.North))
+        assertThat(position).isEqualTo(State(3, 0, Direction.East))
     }
 
     @Test
     internal fun `move backward`() {
-        val rover = Rover(State(1, 0, Direction.North))
+        val rover = Rover(State(1, 0, Direction.East))
         rover.moveBackward()
 
         val position = rover.getState()
 
-        assertThat(position).isEqualTo(State(0, 0, Direction.North))
+        assertThat(position).isEqualTo(State(0, 0, Direction.East))
     }
 
     @Nested
@@ -130,22 +130,22 @@ AXIS
     inner class MoveForward {
         @Test
         internal fun `move forward - from north`() {
-            val rover = Rover(State(0, 0, Direction.North))
+            val rover = Rover(State(0, 0, Direction.East))
             rover.moveForward()
 
             val position = rover.getState()
 
-            assertThat(position).isEqualTo(State(1, 0, Direction.North))
+            assertThat(position).isEqualTo(State(1, 0, Direction.East))
         }
 
         @Test
         internal fun `move forward - from north - different x`() {
-            val rover = Rover(State(1, 0, Direction.North))
+            val rover = Rover(State(1, 0, Direction.East))
             rover.moveForward()
 
             val position = rover.getState()
 
-            assertThat(position).isEqualTo(State(2, 0, Direction.North))
+            assertThat(position).isEqualTo(State(2, 0, Direction.East))
         }
     }
 }
