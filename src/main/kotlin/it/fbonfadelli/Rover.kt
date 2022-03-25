@@ -24,14 +24,16 @@ class Rover(private var state: State) {
   }
 
   fun turnRight() {
-    val direction =
-      if (state.directionn == Direction.North) Direction.East
-      else if (state.directionn == Direction.East) Direction.South
-      else if (state.directionn == Direction.South) Direction.West
-      else Direction.North
-
-    this.state = this.state.copy(directionn = direction)
+    this.state = this.state.copy(directionn = rotateRight(state.directionn))
   }
+
+  private fun rotateRight(startingDirection: Direction) =
+    when (startingDirection) {
+      Direction.North -> Direction.East
+      Direction.East -> Direction.South
+      Direction.South -> Direction.West
+      else -> Direction.North
+    }
 
   fun turnLeft() {
     // nothing to do on X axis
