@@ -61,7 +61,7 @@ AXIS
     @Nested
     inner class TurnRight {
         @Test
-        internal fun `turn right`() {
+        internal fun `turn right - from north`() {
             val rover = Rover(State(1, 0, "n"))
             rover.turnRight()
 
@@ -71,13 +71,33 @@ AXIS
         }
 
         @Test
-        internal fun `turn right - from different position`() {
+        internal fun `turn right - from east`() {
             val rover = Rover(State(1, 0, "e"))
             rover.turnRight()
 
             val position = rover.getPosition()
 
             assertThat(position).isEqualTo(State(1, 0, "s"))
+        }
+
+        @Test
+        internal fun `turn right - from south`() {
+            val rover = Rover(State(1, 0, "s"))
+            rover.turnRight()
+
+            val position = rover.getPosition()
+
+            assertThat(position).isEqualTo(State(1, 0, "w"))
+        }
+
+        @Test
+        internal fun `turn right - from west`() {
+            val rover = Rover(State(1, 0, "w"))
+            rover.turnRight()
+
+            val position = rover.getPosition()
+
+            assertThat(position).isEqualTo(State(1, 0, "n"))
         }
     }
 
