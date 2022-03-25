@@ -28,16 +28,6 @@ AXIS
         assertThat(position).isEqualTo(State(3, 0, Direction.East))
     }
 
-    @Test
-    internal fun `move backward`() {
-        val rover = Rover(State(1, 0, Direction.East))
-        rover.moveBackward()
-
-        val position = rover.getState()
-
-        assertThat(position).isEqualTo(State(0, 0, Direction.East))
-    }
-
     @Nested
     inner class TurnRight {
 
@@ -176,6 +166,49 @@ AXIS
             val position = rover.getState()
 
             assertThat(position).isEqualTo(State(0, 1, Direction.North))
+        }
+    }
+
+    @Nested
+    inner class MoveBackward {
+        @Test
+        internal fun `move backward - from east`() {
+            val rover = Rover(State(0, 0, Direction.East))
+            rover.moveBackward()
+
+            val position = rover.getState()
+
+            assertThat(position).isEqualTo(State(-1, 0, Direction.East))
+        }
+
+        @Test
+        internal fun `move backward - from south`() {
+            val rover = Rover(State(0, 0, Direction.South))
+            rover.moveBackward()
+
+            val position = rover.getState()
+
+            assertThat(position).isEqualTo(State(0, 1, Direction.South))
+        }
+
+        @Test
+        internal fun `move backward - from west`() {
+            val rover = Rover(State(0, 0, Direction.West))
+            rover.moveBackward()
+
+            val position = rover.getState()
+
+            assertThat(position).isEqualTo(State(1, 0, Direction.West))
+        }
+
+        @Test
+        internal fun `move backward - from north`() {
+            val rover = Rover(State(0, 0, Direction.North))
+            rover.moveBackward()
+
+            val position = rover.getState()
+
+            assertThat(position).isEqualTo(State(0, -1, Direction.North))
         }
     }
 }

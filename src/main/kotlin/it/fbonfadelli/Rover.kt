@@ -42,7 +42,7 @@ class Rover(private var state: State) {
   }
 
   fun moveBackward() {
-    this.state = this.state.copy(x = this.state.x - 1)
+    this.state = moveBackward(state)
   }
 
   companion object {
@@ -53,6 +53,14 @@ class Rover(private var state: State) {
         Direction.West -> state.copy(x = state.x - 1)
         Direction.South -> state.copy(y = state.y - 1)
         else -> state.copy(x = state.x + 1)
+      }
+
+    private fun moveBackward(state: State): State =
+      when (state.direction) {
+        Direction.North -> state.copy(y = state.y - 1)
+        Direction.West -> state.copy(x = state.x + 1)
+        Direction.South -> state.copy(y = state.y + 1)
+        else -> state.copy(x = state.x - 1)
       }
 
     private fun rotateRight(state: State): State =
