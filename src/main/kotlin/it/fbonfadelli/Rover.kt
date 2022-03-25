@@ -28,7 +28,7 @@ class Rover(private var state: State) {
   }
 
   fun turnLeft() {
-    // nothing to do on X axis
+    this.state = rotateLeft(this.state)
   }
 
   companion object {
@@ -38,6 +38,17 @@ class Rover(private var state: State) {
         Direction.North -> Direction.East
         Direction.East -> Direction.South
         Direction.South -> Direction.West
+        else -> Direction.North
+      }
+
+      return state.copy(direction = direction)
+    }
+
+    private fun rotateLeft(state: State): State {
+      val direction = when (state.direction) {
+        Direction.North -> Direction.West
+        Direction.West -> Direction.South
+        Direction.South -> Direction.East
         else -> Direction.North
       }
 
