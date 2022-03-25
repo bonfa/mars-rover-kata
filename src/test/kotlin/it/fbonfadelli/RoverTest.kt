@@ -19,13 +19,13 @@ AXIS
 
     @Test
     internal fun `move forward twice`() {
-        val rover = Rover(State(Position(1, 0), Direction.East))
+        val rover = Rover(State(Position(0, 0), Direction.East))
         rover.moveForward()
         rover.moveForward()
 
         val position = rover.getState()
 
-        assertThat(position).isEqualTo(State(Position(3, 0), Direction.East))
+        assertThat(position).isEqualTo(State(Position(2, 0), Direction.East))
     }
 
     @Nested
