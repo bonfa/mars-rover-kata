@@ -7,7 +7,7 @@ class HelloTest {
 
 /*
 AXIS
-  - command [F,B,L,R]
+  - command [F,B,L,R] - X
   - number of commands [1,2, ..., n]
   - world dimension [1,2]
   -
@@ -77,15 +77,15 @@ AXIS
         assertThat(position).isEqualTo(1)
     }
 
-
     class Rover(initialX: Int = 0) {
+
         private var x: Int = initialX
 
         fun moveForward() {
             this.x = this.x + 1
         }
 
-        fun getX():Int  {
+        fun getX(): Int {
             return x
         }
 
@@ -102,4 +102,3 @@ AXIS
         }
     }
 }
-
