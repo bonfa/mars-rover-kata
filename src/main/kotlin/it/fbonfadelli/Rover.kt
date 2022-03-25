@@ -1,16 +1,6 @@
 package it.fbonfadelli
 
-data class State(val x: Int, val y: Int, val direction: Direction = Direction.North)
-
-enum class Direction {
-  North,
-  South,
-  East,
-  West
-}
-
 class Rover(private var state: State) {
-
   fun getState(): State {
     return this.state
   }
@@ -32,27 +22,47 @@ class Rover(private var state: State) {
   }
 }
 
+data class Position(val x: Int, val y: Int)
+
+data class State(val position: Position, val direction: Direction = Direction.North)
+
+enum class Direction {
+  North,
+  South,
+  East,
+  West
+}
+
 private fun moveForward(state: State): State =
-  when (state.direction) {
-    Direction.North -> state.copy(y = state.y + 1)
-    Direction.West -> state.copy(x = state.x - 1)
-    Direction.South -> state.copy(y = state.y - 1)
-    else -> state.copy(x = state.x + 1)
-  }
+  state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position))
 
 private fun moveBackward(state: State): State =
-  when (state.direction) {
-    Direction.North -> state.copy(y = state.y - 1)
-    Direction.West -> state.copy(x = state.x + 1)
-    Direction.South -> state.copy(y = state.y + 1)
-    else -> state.copy(x = state.x - 1)
-  }
+  state.copy(position = moveBackwardMap[state.direction]!!.invoke(state.position))
 
 private fun rotateRight(state: State): State =
   state.copy(direction = rightRotationMap[state.direction]!!)
 
 private fun rotateLeft(state: State): State =
   state.copy(direction = leftRotationMap[state.direction]!!)
+
+private val incrementX: (Position) -> Position = { position -> position.copy(x = position.x + 1) }
+private val decrementX: (Position) -> Position = { position -> position.copy(x = position.x - 1) }
+private val incrementY: (Position) -> Position = { position -> position.copy(y = position.y + 1) }
+private val decrementY: (Position) -> Position = { position -> position.copy(y = position.y - 1) }
+
+val moveForwardMap = mapOf(
+  Direction.North to incrementY,
+  Direction.West to decrementX,
+  Direction.South to decrementY,
+  Direction.East to incrementX,
+)
+
+val moveBackwardMap = mapOf(
+  Direction.North to decrementY,
+  Direction.West to incrementX,
+  Direction.South to incrementY,
+  Direction.East to decrementX,
+)
 
 val rightRotationMap = mapOf(
   Direction.North to Direction.East,
