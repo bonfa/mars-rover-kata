@@ -1,23 +1,23 @@
 package it.fbonfadelli
 
-data class Position(val x: Int, val y: Int, val direction: String)
+data class State(val x: Int, val y: Int, val direction: String)
 
-class Rover(private var position: Position) {
+class Rover(private var state: State) {
 
-  fun getPosition(): Position {
-    return this.position
+  fun getPosition(): State {
+    return this.state
   }
 
   fun moveForward() {
-    this.position = this.position.copy(x = this.position.x + 1)
+    this.state = this.state.copy(x = this.state.x + 1)
   }
 
   fun moveBackward() {
-    this.position = this.position.copy(x = this.position.x - 1)
+    this.state = this.state.copy(x = this.state.x - 1)
   }
 
   fun turnRight() {
-    this.position = this.position.copy(direction = "e")
+    this.state = this.state.copy(direction = "e")
   }
 
   fun turnLeft() {

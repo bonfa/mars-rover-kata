@@ -18,62 +18,62 @@ AXIS
 
     @Test
     internal fun `move forward`() {
-        val rover = Rover(Position(0, 0, "n"))
+        val rover = Rover(State(0, 0, "n"))
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(1, 0, "n"))
+        assertThat(position).isEqualTo(State(1, 0, "n"))
     }
 
     @Test
     internal fun `move forward - different starting position`() {
-        val rover = Rover(position = Position(1, 0, direction = "n"))
+        val rover = Rover(State(1, 0, direction = "n"))
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(2, 0, "n"))
+        assertThat(position).isEqualTo(State(2, 0, "n"))
     }
 
     @Test
     internal fun `move forward twice`() {
-        val rover = Rover(position = Position(1, 0, direction = "n"))
+        val rover = Rover(State(1, 0, direction = "n"))
         rover.moveForward()
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(3, 0, "n"))
+        assertThat(position).isEqualTo(State(3, 0, "n"))
     }
 
     @Test
     internal fun `move backward`() {
-        val rover = Rover(position = Position(1, 0, direction = "n"))
+        val rover = Rover(State(1, 0, direction = "n"))
         rover.moveBackward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(0, 0, "n"))
+        assertThat(position).isEqualTo(State(0, 0, "n"))
     }
 
     @Test
     internal fun `turn right`() {
-        val rover = Rover(position = Position(1, 0, "n"))
+        val rover = Rover(State(1, 0, "n"))
         rover.turnRight()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(1, 0, "e"))
+        assertThat(position).isEqualTo(State(1, 0, "e"))
     }
 
     @Test
     internal fun `turn left`() {
-        val rover = Rover(position = Position(1, 0, direction = "n"))
+        val rover = Rover(State(1, 0, direction = "n"))
         rover.turnLeft()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(Position(1, 0, "n"))
+        assertThat(position).isEqualTo(State(1, 0, "n"))
     }
 }
