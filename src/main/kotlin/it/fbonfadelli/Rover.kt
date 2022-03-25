@@ -25,7 +25,7 @@ val leftRotationMap = mapOf(
 
 class Rover(private var state: State) {
 
-  fun getPosition(): State {
+  fun getState(): State {
     return this.state
   }
 

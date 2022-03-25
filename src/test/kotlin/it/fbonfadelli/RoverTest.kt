@@ -22,7 +22,7 @@ AXIS
         val rover = Rover(State(0, 0, Direction.North))
         rover.moveForward()
 
-        val position = rover.getPosition()
+        val position = rover.getState()
 
         assertThat(position).isEqualTo(State(1, 0, Direction.North))
     }
@@ -32,7 +32,7 @@ AXIS
         val rover = Rover(State(1, 0, Direction.North))
         rover.moveForward()
 
-        val position = rover.getPosition()
+        val position = rover.getState()
 
         assertThat(position).isEqualTo(State(2, 0, Direction.North))
     }
@@ -43,7 +43,7 @@ AXIS
         rover.moveForward()
         rover.moveForward()
 
-        val position = rover.getPosition()
+        val position = rover.getState()
 
         assertThat(position).isEqualTo(State(3, 0, Direction.North))
     }
@@ -53,7 +53,7 @@ AXIS
         val rover = Rover(State(1, 0, Direction.North))
         rover.moveBackward()
 
-        val position = rover.getPosition()
+        val position = rover.getState()
 
         assertThat(position).isEqualTo(State(0, 0, Direction.North))
     }
@@ -66,7 +66,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.North))
             rover.turnRight()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.East))
         }
@@ -76,7 +76,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.East))
             rover.turnRight()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.South))
         }
@@ -86,7 +86,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.South))
             rover.turnRight()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.West))
         }
@@ -96,7 +96,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.West))
             rover.turnRight()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.North))
         }
@@ -110,7 +110,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.North))
             rover.turnLeft()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.West))
         }
@@ -120,7 +120,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.West))
             rover.turnLeft()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.South))
         }
@@ -130,7 +130,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.South))
             rover.turnLeft()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.East))
         }
@@ -140,7 +140,7 @@ AXIS
             val rover = Rover(State(1, 0, Direction.East))
             rover.turnLeft()
 
-            val position = rover.getPosition()
+            val position = rover.getState()
 
             assertThat(position).isEqualTo(State(1, 0, Direction.North))
         }
