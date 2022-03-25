@@ -7,6 +7,16 @@ class Rover(private var state: State) {
     return this.state
   }
 
+  fun execute(commands: List<Char>): State {
+    val applyCommands =
+      commands.map { commandMap[it]!! }
+        .reduce { acc, command -> { state -> command(acc(state)) } }
+
+    this.state = applyCommands(this.state)
+    return this.state
+//      this.state = turnRight(this.state)
+  }
+
   fun moveForward() {
     this.state = moveForward(state)
   }
@@ -34,6 +44,19 @@ enum class Direction {
   East,
   West
 }
+
+private val moveForwardf: (State) -> State = { state -> state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position)) }
+
+private val moveBackwardf: (State) -> State = { state -> state.copy(position = moveBackwardMap[state.direction]!!.invoke(state.position)) }
+private val rotateRightf: (State) -> State = { state -> state.copy(direction = rightRotationMap[state.direction]!!) }
+private val rotateLeftf: (State) -> State = { state -> state.copy(direction = leftRotationMap[state.direction]!!) }
+
+private val commandMap = mapOf(
+  'r' to rotateRightf,
+  'l' to rotateLeftf,
+  'f' to moveForwardf,
+  'b' to moveBackwardf,
+)
 
 private fun moveForward(state: State): State =
   state.copy(position = moveForwardMap[state.direction]!!.invoke(state.position))
