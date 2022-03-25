@@ -1,7 +1,13 @@
 package it.fbonfadelli
 
+data class State(val x: Int, val y: Int, val directionn: Direction = Direction.north)
 
-data class State(val x: Int, val y: Int, val direction: String)
+enum class Direction {
+  north,
+  south,
+  east,
+  west
+}
 
 class Rover(private var state: State) {
 
@@ -19,12 +25,12 @@ class Rover(private var state: State) {
 
   fun turnRight() {
     val direction =
-      if (state.direction == "n") "e"
-      else if (state.direction == "e") "s"
-      else if (state.direction == "s") "w"
-      else "n"
+      if (state.directionn == Direction.north) Direction.east
+      else if (state.directionn == Direction.east) Direction.south
+      else if (state.directionn == Direction.south) Direction.west
+      else Direction.north
 
-    this.state = this.state.copy(direction = direction)
+    this.state = this.state.copy(directionn = direction)
   }
 
   fun turnLeft() {
