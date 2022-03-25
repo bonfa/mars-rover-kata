@@ -8,10 +8,6 @@ class Rover(private var x: Int = 0) {
     this.x = this.x + 1
   }
 
-  fun getX(): Int {
-    return x
-  }
-
   fun getPosition(): Position {
     return Position(x, 0)
   }
