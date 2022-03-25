@@ -16,31 +16,43 @@ AXIS
 * different starting position - move forward only - x-axis only
 * */
 
-  @Test
-  internal fun `hardcoded starting position and direction - move forward only - x-axis only`() {
-      val rover = Rover()
-      rover.moveForward()
+    @Test
+    internal fun `hardcoded starting position and direction - move forward only - x-axis only`() {
+        val rover = Rover()
+        rover.moveForward()
 
-      val position = rover.getX()
+        val position = rover.getX()
 
-      assertThat(position).isEqualTo(1)
-  }
+        assertThat(position).isEqualTo(1)
+    }
 
-  @Test
-  internal fun `different starting position - move forward only - x-axis only`() {
-    val rover = Rover(1)
-    rover.moveForward()
+    @Test
+    internal fun `different starting position - move forward only - x-axis only`() {
+        val rover = Rover(1)
+        rover.moveForward()
 
-    val position = rover.getX()
+        val position = rover.getX()
 
-    assertThat(position).isEqualTo(2)
-  }
+        assertThat(position).isEqualTo(2)
+    }
 
-  class Rover(initialX: Int = 0) {
-    private var x: Int = initialX
+    @Test
+    internal fun `different starting position - move forward many times - x-axis only`() {
+        val rover = Rover(1)
+        rover.moveForward()
+        rover.moveForward()
 
-      fun moveForward() {
-          this.x = this.x + 1
+        val position = rover.getX()
+
+        assertThat(position).isEqualTo(3)
+    }
+
+
+    class Rover(initialX: Int = 0) {
+        private var x: Int = initialX
+
+        fun moveForward() {
+            this.x = this.x + 1
         }
 
         fun getX():Int  {
