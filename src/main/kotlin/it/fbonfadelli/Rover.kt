@@ -1,8 +1,6 @@
 package it.fbonfadelli
 
-class Rover(initialX: Int = 0) {
-
-  private var x: Int = initialX
+class Rover(private var x: Int = 0) {
 
   fun moveForward() {
     this.x = this.x + 1
