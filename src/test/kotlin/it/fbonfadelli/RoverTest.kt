@@ -19,95 +19,95 @@ AXIS
 
     @Test
     internal fun `move forward`() {
-        val rover = Rover(State(0, 0, directionn = Direction.north))
+        val rover = Rover(State(0, 0, directionn = Direction.North))
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(1, 0, directionn = Direction.north))
+        assertThat(position).isEqualTo(State(1, 0, directionn = Direction.North))
     }
 
     @Test
     internal fun `move forward - different starting position`() {
-        val rover = Rover(State(1, 0, directionn = Direction.north))
+        val rover = Rover(State(1, 0, directionn = Direction.North))
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(2, 0, directionn = Direction.north))
+        assertThat(position).isEqualTo(State(2, 0, directionn = Direction.North))
     }
 
     @Test
     internal fun `move forward twice`() {
-        val rover = Rover(State(1, 0, directionn = Direction.north))
+        val rover = Rover(State(1, 0, directionn = Direction.North))
         rover.moveForward()
         rover.moveForward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(3, 0, directionn = Direction.north))
+        assertThat(position).isEqualTo(State(3, 0, directionn = Direction.North))
     }
 
     @Test
     internal fun `move backward`() {
-        val rover = Rover(State(1, 0, directionn = Direction.north))
+        val rover = Rover(State(1, 0, directionn = Direction.North))
         rover.moveBackward()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(0, 0, directionn = Direction.north))
+        assertThat(position).isEqualTo(State(0, 0, directionn = Direction.North))
     }
 
     @Nested
     inner class TurnRight {
         @Test
         internal fun `turn right - from north`() {
-            val rover = Rover(State(1, 0, directionn = Direction.north))
+            val rover = Rover(State(1, 0, directionn = Direction.North))
             rover.turnRight()
 
             val position = rover.getPosition()
 
-            assertThat(position).isEqualTo(State(1, 0, Direction.east))
+            assertThat(position).isEqualTo(State(1, 0, Direction.East))
         }
 
         @Test
         internal fun `turn right - from east`() {
-            val rover = Rover(State(1, 0, Direction.east))
+            val rover = Rover(State(1, 0, Direction.East))
             rover.turnRight()
 
             val position = rover.getPosition()
 
-            assertThat(position).isEqualTo(State(1, 0, Direction.south))
+            assertThat(position).isEqualTo(State(1, 0, Direction.South))
         }
 
         @Test
         internal fun `turn right - from south`() {
-            val rover = Rover(State(1, 0, Direction.south))
+            val rover = Rover(State(1, 0, Direction.South))
             rover.turnRight()
 
             val position = rover.getPosition()
 
-            assertThat(position).isEqualTo(State(1, 0, Direction.west))
+            assertThat(position).isEqualTo(State(1, 0, Direction.West))
         }
 
         @Test
         internal fun `turn right - from west`() {
-            val rover = Rover(State(1, 0, Direction.west))
+            val rover = Rover(State(1, 0, Direction.West))
             rover.turnRight()
 
             val position = rover.getPosition()
 
-            assertThat(position).isEqualTo(State(1, 0, directionn = Direction.north))
+            assertThat(position).isEqualTo(State(1, 0, directionn = Direction.North))
         }
     }
 
     @Test
     internal fun `turn left`() {
-        val rover = Rover(State(1, 0, directionn = Direction.north))
+        val rover = Rover(State(1, 0, directionn = Direction.North))
         rover.turnLeft()
 
         val position = rover.getPosition()
 
-        assertThat(position).isEqualTo(State(1, 0, directionn = Direction.north))
+        assertThat(position).isEqualTo(State(1, 0, directionn = Direction.North))
     }
 }

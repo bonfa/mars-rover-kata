@@ -1,12 +1,12 @@
 package it.fbonfadelli
 
-data class State(val x: Int, val y: Int, val directionn: Direction = Direction.north)
+data class State(val x: Int, val y: Int, val directionn: Direction = Direction.North)
 
 enum class Direction {
-  north,
-  south,
-  east,
-  west
+  North,
+  South,
+  East,
+  West
 }
 
 class Rover(private var state: State) {
@@ -25,10 +25,10 @@ class Rover(private var state: State) {
 
   fun turnRight() {
     val direction =
-      if (state.directionn == Direction.north) Direction.east
-      else if (state.directionn == Direction.east) Direction.south
-      else if (state.directionn == Direction.south) Direction.west
-      else Direction.north
+      if (state.directionn == Direction.North) Direction.East
+      else if (state.directionn == Direction.East) Direction.South
+      else if (state.directionn == Direction.South) Direction.West
+      else Direction.North
 
     this.state = this.state.copy(directionn = direction)
   }
