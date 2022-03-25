@@ -4,7 +4,8 @@ Solution in TDD of mars-rover-kata.
 - By looking at the commits it is possible to see how the solution has been built incrementally
 - I tried to maintain as much cohesion as possible while refactoring, and using a functional approach whenever I could
 - As a result, all the operations have the same signature: they receive a state and return a state (updated) and they also are based on a map, even if the ones of linear movements are a bit more complicated
-- All the functions are pure functions and the state change is isolated inside the Rover class, whose only responsibility is to orchestrate everything and keep the last version of the state updated.  
+- All the functions are pure functions and the state change is isolated inside the Rover class, whose only responsibility is to orchestrate everything and keep the last version of the state updated
+- The last requirements are missing. 
 
 #Kata Description
 You’re part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet. Develop an API that translates the commands sent from earth to instructions that are understood by the rover.
@@ -18,5 +19,11 @@ The rover receives a character array of commands.
 - Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point, aborts the sequence and reports the obstacle.
 
 
-#Link
+#Link to kata description
 https://kata-log.rocks/mars-rover-katas
+
+
+#License
+
+This project is under BSD 3-Clause "New" or "Revised" License. Read the detail in LICENSE file.
+Copyright (c) 2022, Francesco Bonfadelli. All rights reserved.
